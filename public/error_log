@@ -1,0 +1,20 @@
+[12-Jan-2023 09:27:51 America/Mexico_City] PHP Fatal error:  require(): Failed opening required '/home2/pintura1/apps.pinturasacuario.mx/public/../vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home2/pintura1/apps.pinturasacuario.mx/public/index.php on line 29
+[12-Jan-2023 09:27:55 America/Mexico_City] PHP Fatal error:  require(): Failed opening required '/home2/pintura1/apps.pinturasacuario.mx/public/../vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home2/pintura1/apps.pinturasacuario.mx/public/index.php on line 29
+[12-Jan-2023 09:27:55 America/Mexico_City] PHP Fatal error:  require(): Failed opening required '/home2/pintura1/apps.pinturasacuario.mx/public/../vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home2/pintura1/apps.pinturasacuario.mx/public/index.php on line 29
+[12-Jan-2023 09:27:56 America/Mexico_City] PHP Fatal error:  require(): Failed opening required '/home2/pintura1/apps.pinturasacuario.mx/public/../vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home2/pintura1/apps.pinturasacuario.mx/public/index.php on line 29
+[12-Jan-2023 09:27:57 America/Mexico_City] PHP Fatal error:  require(): Failed opening required '/home2/pintura1/apps.pinturasacuario.mx/public/../vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home2/pintura1/apps.pinturasacuario.mx/public/index.php on line 29
+[24-Feb-2023 10:49:09 America/Mexico_City] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home2/pintura1/apps.pinturasacuario.mx/vendor/laravel/framework/src/Illuminate/Support/Collection.php:1911
+Stack trace:
+#0 /home2/pintura1/apps.pinturasacuario.mx/vendor/laravel/framework/src/Illuminate/Support/Collection.php(42): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(8192, 'Return type of ...', '/home2/pintura1...', 1911)
+#1 /home2/pintura1/apps.pinturasacuario.mx/vendor/composer/ClassLoader.php(444): include('/home2/pintura1...')
+#2 /home2/pintura1/apps.pinturasacuario.mx/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile('/home2/pintura1...')
+#3 /home2/pintura1/apps.pinturasacuario.mx/vendor/laravel/framework/src/Illuminate/Support/helpers.php(422): Composer\Autoload\ClassLoader->loadClass('Illuminate\\Supp...')
+#4 /home2/pintura1/apps.pinturasacuario.mx/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(80): collect(Array)
+#5 /home2/pintura1/apps.pinturasacuario.mx/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#6 /home2/pintura1/apps.pinturasacuario.mx/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(211): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap(Object(Illuminate\Foundation\Application))
+#7 /home2/pintura1/apps.pinturasacuario.mx/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(162): Illuminate\Foundation\Application->bootstrapWith(Array)
+#8 /home2/pintura1/apps.pinturasacuario.mx/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(146): Illuminate\Foundation\Http\Kernel->bootstrap()
+#9 /home2/pintura1/apps.pinturasacuario.mx/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(116): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#10 /home2/pintura1/apps.pinturasacuario.mx/public/index.php(60): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#11 {main} in /home2/pintura1/apps.pinturasacuario.mx/vendor/laravel/framework/src/Illuminate/Support/Collection.php on line 42
+[24-Feb-2023 10:50:38 America/Mexico_City] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return t

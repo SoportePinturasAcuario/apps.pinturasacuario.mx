@@ -1,0 +1,2 @@
+id,id_cliente,ubicacion,departamento,estado,descuento,fecha,articulo,precio,cantidad,importe,tasa,metodo_envio,nota,comentarios_adicionales
+233248310,1964,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",24.03.2023,23189,1059.09,4,4236.36,0%,20005,,"Método de envío: TRANSPORTES PAPANOA"

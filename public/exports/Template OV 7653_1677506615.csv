@@ -1,0 +1,5 @@
+id,id_cliente,ubicacion,departamento,estado,descuento,fecha,articulo,precio,cantidad,importe,tasa,metodo_envio,nota,comentarios_adicionales
+232277653,24911,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",27.02.2023,28318,545.45,8,4363.6,0%,19946,,"Método de envío: J. T. - 73,  NOTA: Enviar a Himno Nacional, Numero 103 B, Colonia Centro, C.P. 62900, en Jojutla, Morelos"
+232277653,24911,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",27.02.2023,27603,545.45,3,1636.35,0%,19946,,"Método de envío: J. T. - 73,  NOTA: Enviar a Himno Nacional, Numero 103 B, Colonia Centro, C.P. 62900, en Jojutla, Morelos"
+232277653,24911,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",27.02.2023,22594,457.72,6,2746.32,0%,19946,,"Método de envío: J. T. - 73,  NOTA: Enviar a Himno Nacional, Numero 103 B, Colonia Centro, C.P. 62900, en Jojutla, Morelos"
+232277653,24911,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",27.02.2023,22572,1271.97,2,2543.94,0%,19946,,"Método de envío: J. T. - 73,  NOTA: Enviar a Himno Nacional, Numero 103 B, Colonia Centro, C.P. 62900, en Jojutla, Morelos"

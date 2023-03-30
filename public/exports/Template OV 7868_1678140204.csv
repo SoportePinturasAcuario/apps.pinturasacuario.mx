@@ -1,0 +1,3 @@
+id,id_cliente,ubicacion,departamento,estado,descuento,fecha,articulo,precio,cantidad,importe,tasa,metodo_envio,nota,comentarios_adicionales
+23367868,2948,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",06.03.2023,22594,457.72,20,9154.4,0%,19970,,"Método de envío: SIN TRANSPORTE,  NOTA: Pedido del cliente Ferreteria Zapopan (nayarit) OC11708"
+23367868,2948,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",06.03.2023,22593,120.89,15,1813.35,0%,19970,,"Método de envío: SIN TRANSPORTE,  NOTA: Pedido del cliente Ferreteria Zapopan (nayarit) OC11708"

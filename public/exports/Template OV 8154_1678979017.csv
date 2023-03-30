@@ -1,0 +1,4 @@
+id,id_cliente,ubicacion,departamento,estado,descuento,fecha,articulo,precio,cantidad,importe,tasa,metodo_envio,nota,comentarios_adicionales
+233168154,1988,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",16.03.2023,23137,889.21,2,1778.42,0%,,,
+233168154,1988,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",16.03.2023,23042,1786.6,5,8933,0%,,,
+233168154,1988,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",16.03.2023,2169,131.91,60,7914.6,0%,,,

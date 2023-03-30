@@ -1,0 +1,34 @@
+<?php
+
+namespace Apps\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class CollaboratorRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            'id' => 'required|integer|min:99|max:99999|unique:nom.collaborators,id',
+            'name' => 'required',
+            'sexo' => 'required',
+            'sucursal_id' => 'required|integer',
+            'departamento_id' => 'required|integer',
+        ];
+    }
+}

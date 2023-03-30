@@ -1,0 +1,87 @@
+<?php
+namespace Apps;
+use Carbon\Carbon;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Apply extends Model
+{
+    protected $connection = 'nom';
+
+    protected $fillable = ["poll_id", "form_id", "collaborator_id", "status_id"];
+
+    public function apply(){
+        return $this->hasOne(Apply::class, "id", "ec", "tipoestadosciviles");
+
+        // 1) Modelo relacionado
+        // 2) Lavve primaria del modelo relacionado 
+        // 3) Llave foranea de este modelo 'Poll'
+        // 4) Nombre de la tabla relacionada
+    }
+
+    public function poll(){
+    	return $this->belongsTo(Poll::class);
+    }
+
+    public function collaborator(){
+    	return $this->belongsTo(Collaborator::class)->withTrashed();
+    }
+
+    public function departamentos(){
+    	return $this->belongsTo(Departamentos::class);
+    }  
+
+    public function status(){
+        return $this->belongsTo(Status::class);
+    } 
+
+    public function form(){
+        return $this->belongsTo(Form::class);
+    }
+
+    public function answers(){
+        return $this->hasMany(Answer::class);
+    }
+    
+    public function formatDates(){
+        $created_at = Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at);
+        $this->created = $created_at->toDayDateTimeString();
+
+        $updated_at = Carbon::createFromFormat('Y-m-d H:i:s', $this->updated_at);
+        $this->updated = $updated_at->toDayDateTimeString();
+    }
+
+    public function qualification(){
+        return $this->hasOne(Qualification::class);
+    }
+
+    public function progress(){
+
+        if ($this->form_id) {
+            
+            if ($this->status_id == 20) {
+                return 100;
+            }
+
+            $questions = count($this->form->questions);
+
+            $answers = count($this->answers);
+
+            $progress = ($answers * 100) / $questions;
+
+            return ($progress === null)?0:round($progress);
+        }
+
+
+        $forms = $this->poll->forms->count();
+
+        $appliesAnswered = $this->collaborator->applies->filter(function($apply, $key) {
+            return ($apply->id != $this->id && $apply->poll_id == $this->poll_id && $apply->status_id == 20);
+        });
+
+
+        $progress = (($appliesAnswered->count() * 100) / $forms);
+
+        return ($progress === null)?0:round($progress);
+    }        
+}

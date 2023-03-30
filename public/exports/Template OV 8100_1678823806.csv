@@ -1,0 +1,7 @@
+id,id_cliente,ubicacion,departamento,estado,descuento,fecha,articulo,precio,cantidad,importe,tasa,metodo_envio,nota,comentarios_adicionales
+233148100,24974,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",14.03.2023,22572,1271.97,10,12719.7,0%,,,",  NOTA: Pedido para Tienda 1  (Av. Michoacán)"
+233148100,24974,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",14.03.2023,22574,1271.97,4,5087.88,0%,,,",  NOTA: Pedido para Tienda 1  (Av. Michoacán)"
+233148100,24974,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",14.03.2023,22607,1017.58,4,4070.32,0%,,,",  NOTA: Pedido para Tienda 1  (Av. Michoacán)"
+233148100,24974,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",14.03.2023,22603,830.7,3,2492.1,0%,,,",  NOTA: Pedido para Tienda 1  (Av. Michoacán)"
+233148100,24974,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",14.03.2023,22598,830.7,4,3322.8,0%,,,",  NOTA: Pedido para Tienda 1  (Av. Michoacán)"
+233148100,24974,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",14.03.2023,22591,457.72,2,915.44,0%,,,",  NOTA: Pedido para Tienda 1  (Av. Michoacán)"

@@ -1,0 +1,8 @@
+id,id_cliente,ubicacion,departamento,estado,descuento,fecha,articulo,precio,cantidad,importe,tasa,metodo_envio,nota,comentarios_adicionales
+23317776,2948,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",01.03.2023,10659,41.5,7,290.5,0%,19970,,"Método de envío: SIN TRANSPORTE,  NOTA: Pedido del cliente Gerardo Cortes Lomeli correspondiente de su 1% mandar con un pedido de material que se mandara esta semana"
+23317776,2948,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",01.03.2023,10660,41.5,7,290.5,0%,19970,,"Método de envío: SIN TRANSPORTE,  NOTA: Pedido del cliente Gerardo Cortes Lomeli correspondiente de su 1% mandar con un pedido de material que se mandara esta semana"
+23317781,2533,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",01.03.2023,24020,696.94,10,6969.4,0%,,,",  NOTA: ORDEN DE COMPRA P00758 BODEG JUAREZ 1"
+23317781,2533,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",01.03.2023,24021,2985.84,3,8957.52,0%,,,",  NOTA: ORDEN DE COMPRA P00758 BODEG JUAREZ 1"
+23317781,2533,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",01.03.2023,2154,228.96,115,26330.4,0%,,,",  NOTA: ORDEN DE COMPRA P00758 BODEG JUAREZ 1"
+23317781,2533,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",01.03.2023,23136,211.3,10,2113,0%,,,",  NOTA: ORDEN DE COMPRA P00758 BODEG JUAREZ 1"
+23317781,2533,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",01.03.2023,23137,924.88,4,3699.52,0%,,,",  NOTA: ORDEN DE COMPRA P00758 BODEG JUAREZ 1"

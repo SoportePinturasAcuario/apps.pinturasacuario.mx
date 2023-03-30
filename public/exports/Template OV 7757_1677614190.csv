@@ -1,0 +1,3 @@
+id,id_cliente,ubicacion,departamento,estado,descuento,fecha,articulo,precio,cantidad,importe,tasa,metodo_envio,nota,comentarios_adicionales
+232287757,2451,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",28.02.2023,22572,1271.97,5,6359.85,0%,19970,,"Método de envío: SIN TRANSPORTE,  NOTA: Favor de mandar 6 litros de esmalte flash chocolate"
+232287757,2451,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",28.02.2023,29923,86.06,12,1032.72,0%,19970,,"Método de envío: SIN TRANSPORTE,  NOTA: Favor de mandar 6 litros de esmalte flash chocolate"

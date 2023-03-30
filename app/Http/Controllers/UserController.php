@@ -1,0 +1,326 @@
+<?php
+
+namespace Apps\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Tymon\JWTAuth\Facades\JWTAuth;
+use Apps\Notifications\UserWellcomeNotification;
+use Apps\Http\Requests\UserRequest;
+use Carbon\Carbon;
+
+use Apps\User;
+use Apps\Rol;
+use Apps\App;
+use Apps\Collaborator;
+use Apps\Models\Store\Customer;
+
+class UserController extends Controller {
+
+    public function data() {
+        $user = Auth::user();
+
+        $user->roles;
+
+        $user->apps;
+
+        switch ($user->acount_type_id) {
+            case 1:
+                $collaborator = Collaborator::withTrashed()->select(['id', 'name'])->find($user->userable_id);                
+
+                $user->name = $collaborator->name;
+                
+                break;
+            case 2:
+                $user->customer = Customer::findOrFail($user->userable_id);
+
+                $user->name = $user->customer->name;
+
+                break;
+        }
+
+        return response()->json([
+            'data' => $user
+        ]);
+    }  
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $users = User::with('collaborator')->withTrashed()->get();
+
+        return response()->json([
+            "success" => true,
+            "data" => $users,
+        ], 200, [], JSON_NUMERIC_CHECK);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(UserRequest $request) {
+        switch ($request->get('acount_type_id')) {
+            // Internal
+            case 1:
+                $password = $request->get('password');
+
+                $collaborator = Collaborator::findOrFail($request->get('collaborator_id'));
+
+                $user = $collaborator->user()->create([
+                    'password' => bcrypt($password),
+                    'email' => $request->get('email'),
+                    'acount_type_id' => $request->get('acount_type_id'),
+                    'collaborator_id' => $request->get('collaborator_id'),
+                ]);
+
+                break;
+            // Customer
+            case 2: 
+                $customer = Customer::where('rfc', $request->get('rfc'))->get()->first();
+
+                if ($customer->user) {
+                    return response()->json([
+                        'message' => 'The given data was invalid.',
+                        'errors' => [
+                            'rfc' => ['Este RFC ya tiene una cuenta vinculada.'],
+                        ],
+                    ], 422);
+                }
+
+                $user = $customer->user()->create([
+                    'email' => $request->get('email'),
+                    'password' => bcrypt($request->get('password')),
+                    'acount_type_id' => $request->get('acount_type_id'),
+                ]);
+
+                // Asignamos App
+                $user->apps()->attach(6);
+
+                // Asigansmos rol
+                $user->roles()->attach(6);
+
+                break;
+            default:
+                return response()->json([
+                    'message' => 'The given data was invalid.',
+                    'errors' => [
+                        'acount_type_id' => ['El típo de cuenta no es valido.'],
+                    ],
+                ], 422, []);
+
+                break;
+        }
+
+        // $token = JWTAuth::attempt([
+        //     'email' => $request->get('email'),
+        //     'password' => $password
+        // ]);
+
+        // $user->notify(new UserWellcomeNotification($password));
+
+        return response()->json([
+            "success" => true,
+            "data" => '',
+        ], 200, []);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id) {
+        $user = User::withTrashed()->with('collaborator', 'roles')->find($id);
+
+        return response()->json([
+            "success" => true,
+            "data" => $user,
+        ], 200, [], JSON_NUMERIC_CHECK);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(User $user) {
+        $user->delete();
+
+        return response()->json([
+            "success" => true,
+            "data" => $user,
+        ], 200);
+    }
+
+    public function restore($id) {
+
+        $user = User::withTrashed()
+        ->where('id', $id)
+        ->restore();
+
+        return response()->json([
+            "success" => true,
+            "data" => $user,
+        ], 200);
+    }    
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function rolIndex($user_id) {
+        $user = User::withTrashed()->with('collaborator', 'roles')->find($user_id);
+
+        return response()->json([
+            "success" => true,
+            "data" => $user->roles,
+        ], 200, [], JSON_NUMERIC_CHECK);
+    } 
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function rolStore(User $user, Request $request)
+    {
+        $rol_id = $request->get('rol_id');
+
+        if ($user->roles->whereIn('id', $rol_id)->isEmpty()) {
+            $user->roles()->attach($rol_id);
+        }
+    } 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function rolDelete(User $user, $rol_id)
+    {
+        $user->roles()->detach($rol_id);
+    }
+
+    // Apps
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function appIndex($user_id) {
+        $user = User::withTrashed()->with('collaborator', 'roles')->find($user_id);
+
+        return response()->json([
+            "success" => true,
+            "data" => $user->apps,
+        ], 200, [], JSON_NUMERIC_CHECK);
+    } 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function appStore(User $user, Request $request)
+    {
+        $app_id = $request->get('app_id');
+
+        if ($user->apps->whereIn('app_id', $app_id)->isEmpty()) {
+            $user->apps()->attach($app_id);
+        }
+    } 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function appDelete(User $user, $app_id)
+    {
+        $user->apps()->detach($app_id);
+    }
+
+    public function notifiactionIndex2(User $user){
+        return response()->json([
+            'data' => $user->notifications,
+        ], 200);
+    }
+
+    public function notificationIndex($user_id){
+        $notifications = collect([]);
+
+        // Support Staff Fileless Transactions
+        $user = User::with('support_staff.transactions.files')->find($user_id);
+
+        if (!empty($user->support_staff)) {
+            $filelessTransactions = $user->support_staff->transactions->each(function($transaction) use($notifications){
+                if (
+                    $transaction->files->isEmpty()
+                    && in_array($transaction->type_of_transaction->id, [1,2,3])
+                        // && $transaction->date < Carbon::now()->format('Y-m-d')
+                        // && $transaction->created_at->format('Y-m-d') > Carbon::now()->subDays(14)->format('Y-m-d')
+                ) {
+                    $notifications->prepend([
+                        'id' => $transaction->id,
+                        'type_of_notification' => 'transaction',
+                        'color' => 'danger',
+                        'title' => $transaction->type_of_transaction->name,
+                        'subtitle' => 'Trasaccion #' . $transaction->id . ' sin archivos adjuntos.',
+                        'date' => Carbon::now()->format('Y-m-d'),
+                        'diff_for_humans' => Carbon::parse($transaction->created_at)->diffForhumans(),
+                    ]);
+                }
+            });
+        }
+
+        return response()->json([
+            'data' => $notifications,
+        ], 200);
+    }
+
+    public function avatarUpdate(Request $request, $user_id){
+        $this->validate($request, [
+            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif'
+        ]);
+
+        $user = User::findOrFail($user_id);
+        
+        $path = 'storage/users/';
+
+        $name = $user->id . "-avatar.jpg";
+        
+        \Storage::disk('local')->put($path . $name,  \File::get($request->file('avatar')));
+
+        $user->update(['avatar' => $name]);
+
+        return response()->json([
+            'success' => true,
+            'data' => $user,
+        ], 200, [], JSON_NUMERIC_CHECK);        
+    }    
+}

@@ -1,0 +1,2 @@
+id,id_cliente,ubicacion,departamento,estado,descuento,fecha,articulo,precio,cantidad,importe,tasa,metodo_envio,nota,comentarios_adicionales
+233218222,24830,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",21.03.2023,23139,196.68,8,1573.44,0%,19986,,"Método de envío: TRANSPORTES COSTA Y ALTOS DE CHIAPAS"

@@ -1,0 +1,2 @@
+id,id_cliente,ubicacion,departamento,estado,descuento,fecha,articulo,precio,cantidad,importe,tasa,metodo_envio,nota,comentarios_adicionales
+23317789,109,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",01.03.2023,23112,855.31,10,8553.1,0%,19970,,"Método de envío: SIN TRANSPORTE,  NOTA: Favor de tomar a precio de Tambor"

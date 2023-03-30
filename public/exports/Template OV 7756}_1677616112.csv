@@ -1,0 +1,4 @@
+id,id_cliente,ubicacion,departamento,estado,descuento,fecha,articulo,precio,cantidad,importe,tasa,metodo_envio,nota,comentarios_adicionales
+232287756,2628,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",28.02.2023,22594,457.72,6,2746.32,0%,19956,,"Método de envío: NUESTRO CONDUCTO"
+232287756,2628,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",28.02.2023,22605,1017.58,15,15263.7,0%,19956,,"Método de envío: NUESTRO CONDUCTO"
+232287756,2628,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",28.02.2023,22574,1271.97,5,6359.85,0%,19956,,"Método de envío: NUESTRO CONDUCTO"

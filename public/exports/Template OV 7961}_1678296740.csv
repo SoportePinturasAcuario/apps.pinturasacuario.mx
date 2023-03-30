@@ -1,0 +1,2 @@
+id,id_cliente,ubicacion,departamento,estado,descuento,fecha,articulo,precio,cantidad,importe,tasa,metodo_envio,nota,comentarios_adicionales
+23387961,2910,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",08.03.2023,21875,1909.12,100,190912,0%,19919,,"Método de envío: AUTOTRANSPORTES VILLAREAL"

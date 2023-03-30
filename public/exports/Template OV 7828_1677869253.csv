@@ -1,0 +1,5 @@
+id,id_cliente,ubicacion,departamento,estado,descuento,fecha,articulo,precio,cantidad,importe,tasa,metodo_envio,nota,comentarios_adicionales
+23337828,1937,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",03.03.2023,1300,35.57,960,34147.2,0%,,,
+23337828,1937,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",03.03.2023,1263,35.57,600,21342,0%,,,
+23337828,1937,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",03.03.2023,1324,53.38,360,19216.8,0%,,,
+23337828,1937,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",03.03.2023,1314,35.57,360,12805.2,0%,,,

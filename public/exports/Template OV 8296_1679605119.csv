@@ -1,0 +1,3 @@
+id,id_cliente,ubicacion,departamento,estado,descuento,fecha,articulo,precio,cantidad,importe,tasa,metodo_envio,nota,comentarios_adicionales
+233238296,2547,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",23.03.2023,22495,2472.05,2,4944.1,0%,19999,,"Método de envío: TRANSPORTES LINDO MICHOACAN"
+233238296,2547,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",23.03.2023,22552,2472.05,2,4944.1,0%,19999,,"Método de envío: TRANSPORTES LINDO MICHOACAN"

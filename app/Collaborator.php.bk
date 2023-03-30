@@ -1,0 +1,80 @@
+<?php
+
+namespace Apps;
+
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Apps\Models\Pivots\CollaboratorExtension;
+
+// Models
+use Apps\User;
+use Apps\Models\Checker\Descriptor;
+
+class Collaborator extends Model
+{
+	protected $connection = 'nom';
+
+    use Notifiable;
+
+    use SoftDeletes;
+
+    protected $fillable = [
+    	"id",
+    	"name",
+		"sexo",
+		"edad",
+		"ec",
+		"rturno",
+		"ocupacion",
+		"nexperiencia",
+		"meses",
+		"departamento_id",
+        "sucursal_id",
+		"tipopuesto_id",
+		"tipocontratacion_id",
+		"tipopersonal_id",
+		"tipojornada_id",
+		"tipoacademico_id",
+		"active",
+        'deleted_at',
+	];
+
+    public function extensions(){
+        $ext = \DB::connection('ti')->table('collaborator_extension')->where('collaborator_id', $this->id)->get();
+
+        return $ext->toArray();
+    }
+
+    public function polls(){
+        return $this->belongsToMany(Poll::class);
+    }
+
+    public function department(){
+        return  $this->belongsTo(Department::class, "departamento_id", "id"); 
+    }
+
+    public function branchoffice(){
+        return  $this->belongsTo(BranchOffice::class, "sucursal_id", "id"); 
+    }    
+
+    public function applices(){
+        return  $this->hasMany(Apply::class); 
+    }   
+
+    public function applies(){
+        return  $this->hasMany(Apply::class); 
+    }
+
+    public function emails(){
+    	return $this->belongsToMany(Email::class);
+    }   
+
+    public function user(){
+        return $this->morphOne(User::class, 'userable');
+    }
+
+    public function descriptors() {
+        return $this->hasMany(Descriptor::class);
+    }
+}

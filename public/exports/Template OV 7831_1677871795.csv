@@ -1,0 +1,4 @@
+id,id_cliente,ubicacion,departamento,estado,descuento,fecha,articulo,precio,cantidad,importe,tasa,metodo_envio,nota,comentarios_adicionales
+23337831,1940,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",03.03.2023,23033,63.63,5,318.15,0%,19951,,"Método de envío: LINEAS UNIDAS DEL SUR"
+23337831,1940,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",03.03.2023,2155,220.54,2,441.08,0%,19951,,"Método de envío: LINEAS UNIDAS DEL SUR"
+23337831,1940,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",03.03.2023,2214,66.89,18,1204.02,0%,19951,,"Método de envío: LINEAS UNIDAS DEL SUR"

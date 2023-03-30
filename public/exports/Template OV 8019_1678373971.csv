@@ -1,0 +1,2 @@
+id,id_cliente,ubicacion,departamento,estado,descuento,fecha,articulo,precio,cantidad,importe,tasa,metodo_envio,nota,comentarios_adicionales
+23398019,26325,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",09.03.2023,22594,457.72,10,4577.2,0%,19922,,"Método de envío: CLIENTE RECOGE"

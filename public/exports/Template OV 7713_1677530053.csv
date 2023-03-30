@@ -1,0 +1,5 @@
+id,id_cliente,ubicacion,departamento,estado,descuento,fecha,articulo,precio,cantidad,importe,tasa,metodo_envio,nota,comentarios_adicionales
+232277713,2418,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",27.02.2023,22979,2349.07,5,11745.35,0%,19970,,"Método de envío: SIN TRANSPORTE"
+232277713,2418,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",27.02.2023,23032,944.42,5,4722.1,0%,19970,,"Método de envío: SIN TRANSPORTE"
+232277713,2418,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",27.02.2023,22982,2349.07,1,2349.07,0%,19970,,"Método de envío: SIN TRANSPORTE"
+232277713,2418,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",27.02.2023,23137,889.21,5,4446.05,0%,19970,,"Método de envío: SIN TRANSPORTE"

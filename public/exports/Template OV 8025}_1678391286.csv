@@ -1,0 +1,5 @@
+id,id_cliente,ubicacion,departamento,estado,descuento,fecha,articulo,precio,cantidad,importe,tasa,metodo_envio,nota,comentarios_adicionales
+23398025,26539,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",09.03.2023,23556,618.94,1,618.94,0%,19946,,"Método de envío: J. T. - 73"
+23398025,26539,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",09.03.2023,2219,50.45,6,302.7,0%,19946,,"Método de envío: J. T. - 73"
+23398025,26539,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",09.03.2023,23109,173.83,4,695.32,0%,19946,,"Método de envío: J. T. - 73"
+23398025,26539,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",09.03.2023,23299,1529.59,2,3059.18,0%,19946,,"Método de envío: J. T. - 73"

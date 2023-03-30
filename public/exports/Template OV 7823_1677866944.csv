@@ -1,0 +1,2 @@
+id,id_cliente,ubicacion,departamento,estado,descuento,fecha,articulo,precio,cantidad,importe,tasa,metodo_envio,nota,comentarios_adicionales
+23337823,2948,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",03.03.2023,23224,1111.53,13,14449.89,0%,19970,,"Método de envío: SIN TRANSPORTE,  NOTA: Pedido de Gerardo Cortes Lomeli"

@@ -1,0 +1,361 @@
+<?php
+
+namespace Apps\Http\Controllers\Claim;
+
+use Illuminate\Http\Request;
+use Apps\Http\Controllers\Controller;
+use Apps\Notifications\Clientes\ClaimCreatedNotification;
+use Apps\Notifications\Clientes\ClaimStatusUpdatedNotification;
+use Illuminate\Support\Facades\Storage;
+use Apps\Collaborator;
+
+// Requests
+use Apps\Http\Requests\Claim\ClaimRequest;
+
+// Models
+use Apps\Models\Claim\Claim;
+use Apps\Models\Claim\Post;
+
+class ClaimeController extends Controller
+{
+    // protected $for = [2481];
+
+    protected $for = [
+        2493,
+        722236,
+    ];    
+    
+    //     2481,    MARTINEZ MARTINEZ JOSE ANGEL 
+    //     70045,   SANCHEZ DIAZ MIGUEL ALEJANDRO    
+    //     700,     JASSO REYES CLAUDIA CARMEN    
+    //     2493,    GUTIERREZ BASTIDA MARIA DE LA LUZ    
+    //     22397,   MARÍA MAGDALENA GALVEZ MARTINEZ  
+    //     AC233,   ARIANNA NAVARRETE PACHECO
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $claims = Claim::with([
+            'customer',
+            'collaborator',
+            'classification'
+        ])->get();
+
+        return response()->json([
+            'success' => true,
+            'data' => $claims,
+        ], 200, [], JSON_NUMERIC_CHECK); 
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function wherecollaboratorid($collaborator_id) {
+
+        return $this->index();
+
+        $claims = Claim::with('customer', 'collaborator', 'classification')->where('collaborator_id', $collaborator_id)->get();
+
+        return response()->json([
+            'success' => true,
+            'data' => $claims,
+        ], 200, [], JSON_NUMERIC_CHECK); 
+    }    
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $claim = Claim::create($request->all());
+
+        return response()->json([
+            'success' => true,
+            'data' => $claim,
+        ], 200, [], JSON_NUMERIC_CHECK);  
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $claim = Claim::with(['files', 'customer', 'collaborator', 'posts.files'])->findOrFail($id);
+
+        $posts = $claim->posts->each(function($post){
+            $post->user = Collaborator::find($post->collaborator_id);
+
+            return $post;
+        });
+
+        $claim = collect($claim);
+
+        $claim->put('posts', $posts);
+
+        return response()->json([
+            'success' => true,
+            'data' => $claim,
+        ], 200, [], JSON_NUMERIC_CHECK);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(ClaimRequest $request, Claim $claim)
+    {
+        $claim->update($request->all());
+
+        return response()->json([
+            'success' => true,
+            'data' => $claim,
+        ], 200, [], JSON_NUMERIC_CHECK);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Claim $claim)
+    {
+        foreach ($claim->files as $key => $file) {
+            $file->delete();
+
+            Storage::disk('gdrive_claims')->delete('1Qb44vCX9emB9xoWgrV0LZTMqe9FAYGy9/' . $file->gdriveid);
+        }
+
+        $claim->delete();
+
+        return response()->json([
+            'success' => true,
+            'data' => $claim,
+        ], 200, [], JSON_NUMERIC_CHECK);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function topost(Claim $claim, Request $request)
+    {
+        $last = Claim::take(1)->orderBy('folio', 'DESC')->get();
+
+        $posted_at = \Carbon\Carbon::now();
+        $posted_at->toDateTimeString();        
+
+        $claim->update([
+            'status_id' => 2,
+            'posted_at' => $posted_at,
+            'folio' => collect($last)->isEmpty() ? 1 : $last->first()->folio + 1,
+            'firebase_doc' => time(),
+        ]);
+
+        $post = $claim->posts()->create($request->all());
+
+        $collaborator = collect($post->collaborator)->only(['name', 'id']);
+
+        $post = collect($post)->except('collaborator');
+
+        $post->put('user', $collaborator);
+
+        // $claim->put('post', $post);   
+        $claim->post = $post;
+
+        return response()->json([
+            'success' => true,
+            'data' => $claim,
+        ], 200, [], JSON_NUMERIC_CHECK);
+    }    
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function fileStore(Claim $claim, Request $request){
+        // Recibimos el archivo
+        $file = $request->file('file');
+
+        // Salvamos extension
+        $extension = strtolower($file->extension());
+
+        // Obtenemos el nombre eorirginal
+        $name = $request->get("name");
+
+        $url = Storage::disk('gdrive_claims')->url($request->file('file')->store("/", "gdrive_claims"));
+
+        parse_str(parse_url($url, PHP_URL_QUERY), $query);
+
+        $gdriveid = $query['id'];
+
+        $file = $claim->files()->create([
+            'name' => $name,
+            'url' => $url,
+            'gdriveid' => $gdriveid,
+            'extension' => $extension,
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'data' => $file,
+        ], 200, [], JSON_NUMERIC_CHECK);
+    } 
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function fileDelete(Claim $claim, $file_id)
+    {
+        $file = $claim->files->firstWhere('id', $file_id);
+
+        $file->delete();
+
+        Storage::disk('gdrive_claims')->delete('1Qb44vCX9emB9xoWgrV0LZTMqe9FAYGy9/' . $file->gdriveid);
+
+        return response()->json([
+            'success' => true,
+            'data' => $file,
+        ], 200, [], JSON_NUMERIC_CHECK);
+    }
+
+
+    public function postIndex(Claim $claim){
+        $posts = $claim->posts;
+
+        return response()->json([
+            'success' => true,
+            'data' => $posts->values(),
+        ], 200, [], JSON_NUMERIC_CHECK);        
+    }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function postStore(Claim $claim, Request $request)
+    {
+        $post = $claim->posts()->create($request->all());
+
+        foreach ($request->file() as $key => $file) {
+            // Salvamos extension
+            $extension = strtolower($file->extension());
+    
+            // Obtenemos el nombr eorirginal
+            $name = $file->getClientOriginalName();
+    
+            $url = Storage::disk('gdrive_claims')->url($file->store("/", "gdrive_claims"));
+
+            parse_str(parse_url($url, PHP_URL_QUERY), $query);
+
+            $gdriveid = $query['id'];
+
+            $post->files()->create([
+                'name' => $name,
+                'url' => $url,
+                'gdriveid' => $gdriveid,
+                'extension' => $extension,
+            ]);
+        }
+
+        // Obtener archivos
+        $post->files;
+
+        $collaborator = collect($post->collaborator)->only(['name', 'id']);
+
+        $post = collect($post)->except('collaborator');
+
+        $post->put('user', $collaborator);
+
+        return response()->json([
+            'success' => true,
+            'data' => $post,
+        ], 200, [], JSON_NUMERIC_CHECK);
+    }  
+
+          /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function statusUpdate(Claim $claim, Request $request)
+    {
+        $claim->update([
+            'status_id' => $request->get('status_id'),
+        ]);
+
+        $post = $claim->posts()->create($request->all());
+
+        $collaborator = collect($post->collaborator)->only(['name', 'id']);
+
+        $post = collect($post)->except('collaborator');
+
+        $post->put('user', $collaborator);
+
+        $claim->post = $post;
+
+        return response()->json([
+            'success' => true,
+            'data' => $claim,
+        ], 200, [], JSON_NUMERIC_CHECK);
+    }  
+
+
+    public function sendNotificationStatusUpdated(Claim $claim, Request $request){
+
+        $user = collect($request->get('user'));
+        $status = collect($request->get('status'));
+
+        foreach ($this->for as $key => $collaborator_id) {
+            $collaborator = Collaborator::with('emails')->find($collaborator_id);
+
+            if ($collaborator->emails->isNotEmpty()) {
+                $collaborator->email = collect($collaborator->emails)->first()->email;
+
+                $collaborator->notify(new ClaimStatusUpdatedNotification($claim, $status, $user));
+            }
+        }
+    }
+
+    public function sendNotificationCreated(Claim $claim, Request $request){
+
+        $user = collect($request->get('user'));
+        $status = collect($request->get('status'));
+
+        foreach ($this->for as $key => $collaborator_id) {
+            $collaborator = Collaborator::with('emails')->find($collaborator_id);
+
+            if ($collaborator->emails->isNotEmpty()) {
+                $collaborator->email = collect($collaborator->emails)->first()->email;
+
+                $collaborator->notify(new ClaimCreatedNotification($claim, $status, $user));
+            }
+        }
+    }    
+}

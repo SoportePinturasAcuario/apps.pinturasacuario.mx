@@ -1,0 +1,5 @@
+id,id_cliente,ubicacion,departamento,estado,descuento,fecha,articulo,precio,cantidad,importe,tasa,metodo_envio,nota,comentarios_adicionales
+23317780,2103,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",01.03.2023,23396,759.19,2,1518.38,0%,19922,,"Método de envío: CLIENTE RECOGE"
+23317780,2103,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",01.03.2023,23556,618.94,2,1237.88,0%,19922,,"Método de envío: CLIENTE RECOGE"
+23317780,2103,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",01.03.2023,21873,432.43,2,864.86,0%,19922,,"Método de envío: CLIENTE RECOGE"
+23317780,2103,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",01.03.2023,22580,390,1,390,0%,19922,,"Método de envío: CLIENTE RECOGE"

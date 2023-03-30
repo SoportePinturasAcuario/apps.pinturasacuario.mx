@@ -1,0 +1,3 @@
+id,id_cliente,ubicacion,departamento,estado,descuento,fecha,articulo,precio,cantidad,importe,tasa,metodo_envio,nota,comentarios_adicionales
+233168147,2533,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",16.03.2023,22572,1298.09,20,25961.8,0%,,,",  NOTA: O.C. 1043 Bodega Juarez"
+233168147,2533,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",16.03.2023,24020,696.94,10,6969.4,0%,,,",  NOTA: O.C. 1043 Bodega Juarez"

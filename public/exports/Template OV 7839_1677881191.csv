@@ -1,0 +1,4 @@
+id,id_cliente,ubicacion,departamento,estado,descuento,fecha,articulo,precio,cantidad,importe,tasa,metodo_envio,nota,comentarios_adicionales
+23337839,2948,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",03.03.2023,22588,1069.07,10,10690.7,0%,19970,,"Método de envío: SIN TRANSPORTE,  NOTA: Pedido de 890 Jose Angel Lopez de Dios"
+23337839,2948,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",03.03.2023,23120,914.74,7,6403.18,0%,19970,,"Método de envío: SIN TRANSPORTE,  NOTA: Pedido de 890 Jose Angel Lopez de Dios"
+23337839,2948,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",03.03.2023,23119,211.09,10,2110.9,0%,19970,,"Método de envío: SIN TRANSPORTE,  NOTA: Pedido de 890 Jose Angel Lopez de Dios"

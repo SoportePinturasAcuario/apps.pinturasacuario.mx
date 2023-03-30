@@ -1,0 +1,3 @@
+id,id_cliente,ubicacion,departamento,estado,descuento,fecha,articulo,precio,cantidad,importe,tasa,metodo_envio,nota,comentarios_adicionales
+233218215,26539,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",21.03.2023,22579,1397.62,3,4192.86,0%,,,
+233218215,26539,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",21.03.2023,23157,1111.53,2,2223.06,0%,,,

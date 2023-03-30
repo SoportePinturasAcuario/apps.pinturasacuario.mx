@@ -1,0 +1,3 @@
+id,id_cliente,ubicacion,departamento,estado,descuento,fecha,articulo,precio,cantidad,importe,tasa,metodo_envio,nota,comentarios_adicionales
+232287732,26024,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",28.02.2023,22594,457.72,15,6865.8,0%,20005,,"Método de envío: TRANSPORTES PAPANOA,  NOTA: Mandar al cliente 2 galones de Verde Fachada y una caja de litro esmalte 300 blanco para rotulación (cambio de alvamex a acuario)"
+232287732,26024,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",28.02.2023,22603,830.7,15,12460.5,0%,20005,,"Método de envío: TRANSPORTES PAPANOA,  NOTA: Mandar al cliente 2 galones de Verde Fachada y una caja de litro esmalte 300 blanco para rotulación (cambio de alvamex a acuario)"

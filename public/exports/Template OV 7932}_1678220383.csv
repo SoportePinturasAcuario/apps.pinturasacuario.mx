@@ -1,0 +1,3 @@
+id,id_cliente,ubicacion,departamento,estado,descuento,fecha,articulo,precio,cantidad,importe,tasa,metodo_envio,nota,comentarios_adicionales
+23377932,2871,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",07.03.2023,23220,1111.53,4,4446.12,0%,19946,,"Método de envío: J. T. - 73,  NOTA: ** SE ANEXAN LOS SIGUIENTES MATERIALES PARA PEDIDO , GRACIAS ***"
+23377932,2871,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",07.03.2023,23219,256.5,12,3078,0%,19946,,"Método de envío: J. T. - 73,  NOTA: ** SE ANEXAN LOS SIGUIENTES MATERIALES PARA PEDIDO , GRACIAS ***"

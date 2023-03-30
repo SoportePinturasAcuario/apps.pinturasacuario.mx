@@ -1,0 +1,4 @@
+id,id_cliente,ubicacion,departamento,estado,descuento,fecha,articulo,precio,cantidad,importe,tasa,metodo_envio,nota,comentarios_adicionales
+232277708,1988,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",27.02.2023,24020,759.81,20,15196.2,0%,,,
+232277708,1988,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",27.02.2023,24022,759.81,4,3039.24,0%,,,
+232277708,1988,"CEDIS PT FABELA","CEDIS FABELA","APROBACION PENDIENTE","Descuento socio",27.02.2023,24025,939.75,2,1879.5,0%,,,

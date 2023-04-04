@@ -27,31 +27,31 @@ Route::group(['middleware' => ['jwt.auth'], 'prefix' => 'auth'], function () {
         // Apps
         Route::get('{user}/app', 'UserController@appIndex');
         Route::post('{user}/app/store', 'UserController@appStore');
-        Route::delete('{user}/app/{app}', 'UserController@appDelete'); 
+        Route::delete('{user}/app/{app}', 'UserController@appDelete');
 
         Route::get('', 'UserController@data');
     });
     Route::resource('users', 'UserController');
     // Restore
-        Route::put('users/{user}/restore', 'UserController@restore');
+    Route::put('users/{user}/restore', 'UserController@restore');
     // Roles
     Route::resource('rol', 'RolController');
     // Apps
-    Route::resource('app', 'AppController');    
+    Route::resource('app', 'AppController');
 });
 
 Route::group(['middleware' => ['jwt.auth']], function () {
     // Collaborator
-        // Restore
-        Route::put('collaborator/{collaborator}/restore', 'CollaboratorController@restore');
-        // Show(Everything Data)
-        Route::get('collaborator/{collaborator}/witheverything', 'CollaboratorController@show_with_everything');
+    // Restore
+    Route::put('collaborator/{collaborator}/restore', 'CollaboratorController@restore');
+    // Show(Everything Data)
+    Route::get('collaborator/{collaborator}/witheverything', 'CollaboratorController@show_with_everything');
     Route::resource('collaborator', 'CollaboratorController');
 });
 
 // User
-    // Avatar Update
-    Route::post('user/{user}/avatar/update', 'UserController@avatarUpdate');
+// Avatar Update
+Route::post('user/{user}/avatar/update', 'UserController@avatarUpdate');
 
 // RH
 // Route::prefix('rh')->group(function () {
@@ -61,21 +61,21 @@ Route::group(['middleware' => ['jwt.auth']], function () {
 
 // SH
 Route::prefix('sh')->group(function () {
-	// Collaborator
+    // Collaborator
     Route::get('collaborator/{collaborator}/poll', 'CollaboratorController@polls');
     Route::get('collaborator/{collaborator}/poll/{poll}/forms', 'CollaboratorController@poll_forms');
 
     // Poll
     Route::resource('poll', 'Encuestas\PollController');
-        
-        // Collaborator
-        Route::get('poll/{poll}/collaborator', 'Encuestas\PollController@collaborator_index');
 
-        // Applies
-        Route::get('poll/{poll}/applies', 'Encuestas\PollController@applies');
+    // Collaborator
+    Route::get('poll/{poll}/collaborator', 'Encuestas\PollController@collaborator_index');
 
-        // Qualification
-        Route::get('poll/{poll}/qualification', 'Encuestas\PollController@qualification');
+    // Applies
+    Route::get('poll/{poll}/applies', 'Encuestas\PollController@applies');
+
+    // Qualification
+    Route::get('poll/{poll}/qualification', 'Encuestas\PollController@qualification');
 
     // Form
     Route::resource('form', 'Encuestas\FormController');
@@ -104,27 +104,27 @@ Route::prefix('sh')->group(function () {
 });
 
 // Branchoffices
-    Route::get('branchoffice', 'BranchOfficeController@index');
+Route::get('branchoffice', 'BranchOfficeController@index');
 
 // Department
-    Route::get('department', 'DepartmentController@index');
+Route::get('department', 'DepartmentController@index');
 
 // Customers
-	Route::resource('customer', 'CustomerController');
-    Route::post('customer/search', 'CustomerController@search');
+Route::resource('customer', 'CustomerController');
+Route::post('customer/search', 'CustomerController@search');
 
 // Articles
-	Route::resource('article', 'Pa\ArticleController');
-    // Route::post('article/search', 'Pa\ArticleController@search');
+Route::resource('article', 'Pa\ArticleController');
+// Route::post('article/search', 'Pa\ArticleController@search');
 
 // Approval
-	Route::put('approval/{approval}/updatestatus', 'Pa\ApprovalController@updateStatus');
+Route::put('approval/{approval}/updatestatus', 'Pa\ApprovalController@updateStatus');
 
 // Export
-	Route::post('export', 'ExportController@export');
-    
+Route::post('export', 'ExportController@export');
+
 // CSV To Array
-    Route::post('csvtoarray', 'ExportController@csvtoarray');
+Route::post('csvtoarray', 'ExportController@csvtoarray');
 
 // Archivos
-	Route::resource('file', 'FileController');
+Route::resource('file', 'FileController');
